@@ -12,7 +12,7 @@ jobs:
     runs-on: windows-latest
     env:
       MSBUILD_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.com
-      SLN_PATH: xxx.sln
+      SLN_PATH: Uconomy.sln
     steps:
     - uses: actions/checkout@v2
     - name: Build Project
