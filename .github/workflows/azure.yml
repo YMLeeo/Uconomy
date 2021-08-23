@@ -1,0 +1,26 @@
+name: Visual Studio CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      MSBUILD_PATH: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.com
+      SLN_PATH: xxx.sln
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Project
+      shell: cmd
+      run: |
+        "%MSBUILD_PATH%" "%SLN_PATH%" /build
+    - name: Release
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: .
